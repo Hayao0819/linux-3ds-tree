@@ -230,6 +230,7 @@ machine-$(CONFIG_PLAT_SPEAR)		+= spear
 
 # legacy platforms provide their own mach/*.h headers globally,
 # these three are mutually exclusive
+machdirs-$(CONFIG_ARCH_CTR)		+= arch/arm/mach-ctr
 machdirs-$(CONFIG_ARCH_FOOTBRIDGE)	+= arch/arm/mach-footbridge
 machdirs-$(CONFIG_ARCH_RPC)		+= arch/arm/mach-rpc
 machdirs-$(CONFIG_ARCH_SA1100)		+= arch/arm/mach-sa1100
