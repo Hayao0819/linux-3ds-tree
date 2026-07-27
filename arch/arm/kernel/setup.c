@@ -494,6 +494,13 @@ static void __init cpuid_init_hwcaps(void)
 	if (block >= 1)
 		elf_hwcap2 |= HWCAP2_SB;
 
+	/*
+	 * Only ARMv7 makes CP15 c0 CRm 3 read as zero. ARM11 claims ARMv7 in
+	 * ID_MMFR0 but hangs on ID_PFR2, so check the cache type format too.
+	 */
+	if ((read_cpuid_cachetype() & (7 << 29)) != (4 << 29))
+		return;
+
 	/* Check for Speculative Store Bypassing control */
 	pfr2 = read_cpuid_ext(CPUID_EXT_PFR2);
 	block = cpuid_feature_extract_field(pfr2, 4);
