@@ -315,6 +315,13 @@ choice
 		  Say Y here if you want the debug print routines to direct
                   their output to the CNS3xxx UART0.
 
+	config DEBUG_CTR
+		bool "Kernel low-level debugging on the Nintendo 3DS top screen"
+		depends on ARCH_CTR
+		help
+		  Say Y here if you want the debug print routines to draw to the
+		  top screen, one grey pixel per character. The 3DS has no UART.
+
 	config DEBUG_DAVINCI_DA8XX_UART1
 		bool "Kernel low-level debugging on DaVinci DA8XX using UART1"
 		depends on ARCH_DAVINCI_DA8XX
