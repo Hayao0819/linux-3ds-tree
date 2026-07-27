@@ -1,5 +1,7 @@
 //#include <mach/nintendo3ds.h>
 
+#ifdef CONFIG_CTR_UNCOMPRESS_CONSOLE
+
 #define VRAM_BASE             (0x18000000)
 #define FB_BASE_PA            (VRAM_BASE)
 #define FB_TOP_SIZE           (400*240*3)
@@ -213,3 +215,11 @@ static inline void arch_decomp_setup(void)
 	cns_x = 8;
 	cns_y = 8;
 }
+
+#else
+
+static void putc(char c) { }
+static void flush(void) { }
+static inline void arch_decomp_setup(void) { }
+
+#endif
