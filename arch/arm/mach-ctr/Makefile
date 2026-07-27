@@ -1,5 +1,5 @@
 
-ccflags-$(CONFIG_ARCH_MULTIPLATFORM) := -I$(srctree)/$(src)/include
+ccflags-$(CONFIG_ARCH_MULTIPLATFORM) := -I$(src)/include
 
 obj-$(CONFIG_ARCH_CTR) += main_ctr.o
 obj-$(CONFIG_ARCH_CTR) += bottom_lcd.o
