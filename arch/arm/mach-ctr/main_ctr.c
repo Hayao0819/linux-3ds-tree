@@ -21,6 +21,9 @@
 #include <mach/platform.h>
 #include <mach/bottom_lcd.h>
 
+void __init ctr_map_io(void);
+void __init ctr_early_console_init(void);
+
 static void __init ctr_pdn_setup(void)
 {
 	void __iomem *pdn_spi_cnt;
@@ -47,6 +50,8 @@ static const char __initconst *ctr_dt_platform_compat[] = {
 };
 
 DT_MACHINE_START(CTR_DT, "Nintendo 3DS/CTR (Device Tree)")
+	.map_io		= ctr_map_io,
+	.init_early	= ctr_early_console_init,
 	.init_machine	= ctr_dt_init_machine,
 	.dt_compat	= ctr_dt_platform_compat,
 MACHINE_END
