@@ -1927,9 +1927,18 @@ config DEBUG_UNCOMPRESS
 	  kernels.
 	  
 
+config CTR_UNCOMPRESS_CONSOLE
+	bool "Draw decompressor output on the Nintendo 3DS top screen"
+	depends on ARCH_CTR
+	help
+	  The 3DS has no UART, so the decompressor draws to the top screen
+	  instead. It runs before anything can tell it what machine it is on
+	  and writes to 0x18000000 either way, so only say Y if this kernel is
+	  built for the 3DS alone.
+
 config UNCOMPRESS_INCLUDE
 	string
-	default "mach/uncompress.h" if ARCH_CTR || ARCH_FOOTBRIDGE || ARCH_RPC || ARCH_SA1100
+	default "mach/uncompress.h" if CTR_UNCOMPRESS_CONSOLE || ARCH_FOOTBRIDGE || ARCH_RPC || ARCH_SA1100
 	default "debug/uncompress.h"
 
 config EARLY_PRINTK
