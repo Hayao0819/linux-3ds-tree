@@ -203,6 +203,13 @@ static void flush(void)
 
 static inline void arch_decomp_setup(void)
 {
+	/* firm_linux_loader points the PDC at VRAM without ever clearing it */
+	volatile u32 *fb = (volatile u32*)FB_TOP_LEFT1;
+	int i;
+
+	for (i = 0; i < (FB_BOT_2 + FB_BOT_SIZE - FB_TOP_LEFT1)/4; i++)
+		fb[i] = 0;
+
 	cns_x = 8;
 	cns_y = 8;
 }
