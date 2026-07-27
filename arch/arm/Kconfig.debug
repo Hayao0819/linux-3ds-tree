@@ -1922,7 +1922,7 @@ config DEBUG_UNCOMPRESS
 
 config UNCOMPRESS_INCLUDE
 	string
-	default "mach/uncompress.h" if ARCH_FOOTBRIDGE || ARCH_RPC || ARCH_SA1100
+	default "mach/uncompress.h" if ARCH_CTR || ARCH_FOOTBRIDGE || ARCH_RPC || ARCH_SA1100
 	default "debug/uncompress.h"
 
 config EARLY_PRINTK

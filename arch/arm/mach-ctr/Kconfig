@@ -1,5 +1,8 @@
 config ARCH_CTR
 	bool "CTR (Nintendo 3DS family)"
+	# mach-ctr publishes mach/*.h globally, which only works if no other
+	# platform doing the same is in the build
+	depends on !(ARCH_FOOTBRIDGE || ARCH_RPC || ARCH_SA1100)
 	select ARM_GIC
 	select ARM_AMBA
 	select CPU_V6K
